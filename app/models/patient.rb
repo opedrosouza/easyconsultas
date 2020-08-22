@@ -1,3 +1,4 @@
+require 'cpf_cnpj'
 class Patient
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -8,4 +9,12 @@ class Patient
 
   belongs_to :doctor
   has_many :appointments
+
+  validates_presence_of :name, :birth_date, :cpf
+  validates_uniqueness_of :cpf
+  validate :validar_cpf
+
+  def validar_cpf
+    errors.add(:cpf, 'CPF inválido') unless CPF.valid? self.cpf
+  end
 end

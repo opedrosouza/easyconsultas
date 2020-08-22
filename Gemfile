@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 4.7', '>= 4.7.2'
+# Validate, generate and format CPF/CNPJ numbers. Include command-line tools. 
+gem 'cpf_cnpj', '~> 0.5.0'
 # Provides the generator settings required for Rails 3+ to use Slim
 gem 'slim-rails', '~> 3.2'
 # Use Pry as your rails console

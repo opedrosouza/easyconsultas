@@ -16,12 +16,12 @@ class PatientsController < ApplicationController
 
   def create
     @patient = Patient.new patient_params
-
+    cpf_normalizer @patient
     if @patient.save
       flash[:success] = 'Paciente cadastrado com sucesso.'
       redirect_to patients_path
     else
-      flash[:error] = @patient.errors
+      flash[:error] = @patient.errors.full_messages
       render :new
     end
   end
@@ -30,11 +30,12 @@ class PatientsController < ApplicationController
   end
 
   def update
+    cpf_normalizer @patient
     if @patient.update patient_params
       flash[:success] = 'Paciente atualizado com sucesso.'
       redirect_to patient_path(@patient)
     else
-      flash[:error] = 'Algo deu errado, tente novamente.'
+      flash[:error] = @patient.errors.full_messages
       render :edit
     end
   end
@@ -54,5 +55,9 @@ class PatientsController < ApplicationController
 
     def patient_params
       params.require(:patient).permit(:name, :birth_date, :cpf, :doctor_id)
+    end
+
+    def cpf_normalizer patient
+      patient.cpf = patient.cpf.gsub('.', '').gsub('-', '')
     end
 end
