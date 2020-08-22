@@ -1,0 +1,24 @@
+.wrapper
+  = render 'layouts/dashboard/navbar'
+  = render 'layouts/dashboard/sidebar'
+  /! Content Wrapper. Contains page content
+  .content-wrapper
+    /! Content Header (Page header)
+    section.content-header
+      .container-fluid
+        .row.mb-2
+          .col-sm-6
+            h1 = yield :page_title
+          .col-sm-6
+            ol.breadcrumb.float-sm-right
+              li.breadcrumb-item
+                a href="/"  Início
+              li.breadcrumb-item.active = yield :page_title
+      /! /.container-fluid
+    /! Main content
+    section.content
+      = yield
+    /! /.content
+  /! /.content-wrapper
+  = render 'layouts/dashboard/footer'
+/! ./wrapper

@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title EasyConsultas
+    = csrf_meta_tags
+    = csp_meta_tag
+    
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag "https://kit.fontawesome.com/a21eac1055.js"
+
+  - if current_user
+    body.hold-transition.sidebar-mini
+      = render 'layouts/dashboard/index'
+  - else
+    body
+      = render 'layouts/home/index'

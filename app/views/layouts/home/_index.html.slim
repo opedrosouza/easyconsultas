@@ -1,0 +1,35 @@
+/![if IE]
+  | <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p
+/! ====== HEADER PART START ======
+header.header-area
+  = render 'layouts/home/navbar'
+  - if controller_name == 'home'
+    #home.header-hero.bg_cover.d-lg-flex.align-items-center style=("background-image: url(<%= image_path(header-hero.jpg) %>)") 
+      .container
+        .row
+          .col-lg-7
+            .header-hero-content
+              h1.hero-title.wow.fadeInUp data-wow-delay="0.2s" data-wow-duration="1s" 
+                b Easy
+                span Consultas
+                br
+                | Tudo para sua 
+                b saúde.
+              p.text.wow.fadeInUp data-wow-delay="0.5s" data-wow-duration="1s"  Agende consultas com seu médico de forma simples e rápida.
+              .header-singup.wow.fadeInUp data-wow-delay="0.8s" data-wow-duration="1s" 
+                input placeholder="username@yourdomain.com" type="text" /
+                button.main-btn Sign Up
+            /! header hero content
+        /! row
+      /! container
+      .header-hero-image.d-flex.align-items-center.wow.fadeInRightBig data-wow-delay="1.1s" data-wow-duration="1s" 
+        .image
+          / img alt=("Hero Image") src="assets/images/hero-image.png" /
+          = image_tag  "hero-image.png" 
+      /! header hero image
+    /! header hero
+  - else
+    = yield
+/! ====== HEADER PART ENDS ======
+
+= render 'layouts/home/footer'
