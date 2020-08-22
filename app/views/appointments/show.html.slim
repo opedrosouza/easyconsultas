@@ -1,2 +1,16 @@
-h1 Appointments#show
-p Find me in app/views/appointments/show.html.slim
+= content_for :page_title do 
+  span Informacoes da Consulta
+
+.row
+  .col-md-12
+    .card.card-primary
+      .card-header
+        h3.card-title Informacoes detalhadas
+      .card-body
+        h3 = @appointment.starts_at
+        h3 = @appointment.ends_at
+        h3 = @appointment.doctor.name
+        h3 = @appointment.patient.name
+      .card-footer
+      = link_to 'Editar' , edit_appointment_path(@appointment), class: 'btn btn-primary btn-sm'
+      = link_to 'Remover' , appointment_path(@appointment), class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: 'Tem certeza?'}

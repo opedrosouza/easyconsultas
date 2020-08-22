@@ -1,2 +1,29 @@
-h1 Appointments#index
-p Find me in app/views/appointments/index.html.slim
+= content_for :page_title do 
+  span Consultas
+.row
+  .col-md-12
+    .card
+      .card-header
+        h3.card-title Todas as Consultas
+      /! /.card-header
+      .card-body.p-0
+        table.table.table-striped
+          thead
+            tr
+              th Inicio
+              th Fim
+              th Médico
+              th Paciente
+              th Acoes
+          tbody
+            - @appointments.each do |appointment|
+              tr
+                td = appointment.starts_at
+                td = appointment.ends_at
+                td = appointment.doctor.name
+                td = appointment.patient.name
+                td 
+                  = link_to 'Perfil' , appointment_path(appointment), class: 'btn btn-info btn-sm'
+                  = link_to 'Editar' , edit_appointment_path(appointment), class: 'btn btn-primary btn-sm'
+                  = link_to 'Remover' , appointment_path(appointment), class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: 'Tem certeza?'}
+      /! /.card-body
