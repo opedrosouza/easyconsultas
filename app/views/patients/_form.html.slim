@@ -1,0 +1,16 @@
+= form_for @patient, remote: false do |f|       
+  .card-body
+    .form-group
+      = f.label :name, "Nome"
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :birth_date, "Data de Nascimento"
+      = f.date_field :birth_date, class: 'form-control'
+    .form-group
+      = f.label :cpf, "CPF"
+      = f.text_field :cpf, class: 'form-control'
+    .form-group
+      = f.label :cpf, "Selecione o Médico"
+      = f.collection_select(:doctor_id, Doctor.all, :id, :name, {prompt: true}, { class: 'form-control' })
+  .card-footer
+    = f.submit 'Cadastrar', class: 'btn btn-primary'

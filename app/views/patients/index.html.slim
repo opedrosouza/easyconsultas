@@ -1,2 +1,27 @@
-h1 Patients#index
-p Find me in app/views/patients/index.html.slim
+= content_for :page_title do 
+  span Pacientes
+.row
+  .col-md-12
+    .card
+      .card-header
+        h3.card-title Todos os pacientes
+      /! /.card-header
+      .card-body.p-0
+        table.table.table-striped
+          thead
+            tr
+              th Nome
+              th Nascimento
+              th CPF
+              th Acões
+          tbody
+            - @patients.each do |patient|
+              tr
+                td = patient.name
+                td = patient.birth_date
+                td = patient.cpf
+                td 
+                  = link_to 'Perfil' , patient_path(patient), class: 'btn btn-info btn-sm'
+                  = link_to 'Editar' , edit_patient_path(patient), class: 'btn btn-primary btn-sm'
+                  = link_to 'Remover' , patient_path(patient), class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: 'Tem certeza?'}
+      /! /.card-body

@@ -1,2 +1,15 @@
-h1 Patients#show
-p Find me in app/views/patients/show.html.slim
+= content_for :page_title do 
+  span Perfil do Paciente
+
+.row
+  .col-md-12
+    .card.card-primary
+      .card-header
+        h3.card-title Informacoes detalhadas
+      .card-body
+        h3 = @patient.name
+        h3 = @patient.cpf
+        h3 = @patient.birth_date
+      .card-footer
+      = link_to 'Editar' , edit_patient_path(@patient), class: 'btn btn-primary btn-sm'
+      = link_to 'Remover' , patient_path(@patient), class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: 'Tem certeza?'}
