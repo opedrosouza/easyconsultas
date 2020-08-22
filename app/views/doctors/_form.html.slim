@@ -1,0 +1,13 @@
+= form_for @doctor, remote: false do |f|       
+  .card-body
+    .form-group
+      = f.label :name, "Nome"
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :crm, "CRM"
+      = f.text_field :crm, class: 'form-control'
+    .form-group
+      = f.label :crm_uf, "CRM_UF"
+      = f.text_field :crm_uf, class: 'form-control'
+  .card-footer
+    = f.submit 'Cadastrar', class: 'btn btn-primary'

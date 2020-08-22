@@ -24,26 +24,36 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4
           a.nav-link href="#" 
             i.nav-icon.fas.fa-tachometer-alt
             p
-              | Dashboard
+              | Médicos
               i.right.fas.fa-angle-left
             ul.nav.nav-treeview
               li.nav-item
-                a.nav-link href="../../index.html" 
-                  i.far.fa-circle.nav-icon
-                  p Dashboard v1
+                = link_to 'Ver todos', doctors_path, class: 'nav-link'
               li.nav-item
-                a.nav-link href="../../index2.html" 
-                  i.far.fa-circle.nav-icon
-                  p Dashboard v2
-              li.nav-item
-                a.nav-link href="../../index3.html" 
-                  i.far.fa-circle.nav-icon
-                  p Dashboard v3
-        li.nav-item
-          a.nav-link href="../widgets.html" 
-            i.nav-icon.fas.fa-th
+                = link_to 'Cadastrar novo', new_doctor_path, class: 'nav-link'
+
+        li.nav-item.has-treeview
+          a.nav-link href="#" 
+            i.nav-icon.fas.fa-tachometer-alt
             p
-              | Widgets
-              span.right.badge.badge-danger New
+              | Pacientes
+              i.right.fas.fa-angle-left
+            ul.nav.nav-treeview
+              li.nav-item
+                = link_to 'Ver todos', patients_path, class: 'nav-link'
+              li.nav-item
+                = link_to 'Cadastrar novo', new_patient_path, class: 'nav-link'
+
+        li.nav-item.has-treeview
+          a.nav-link href="#" 
+            i.nav-icon.fas.fa-tachometer-alt
+            p
+              | Consultas
+              i.right.fas.fa-angle-left
+            ul.nav.nav-treeview
+              li.nav-item
+                = link_to 'Ver todas', appointments_path, class: 'nav-link'
+              li.nav-item
+                = link_to 'Cadastrar nova', new_appointment_path, class: 'nav-link'
     /! /.sidebar-menu
   /! /.sidebar

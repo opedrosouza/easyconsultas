@@ -17,7 +17,19 @@
       /! /.container-fluid
     /! Main content
     section.content
-      = yield
+      .container-fluid
+        - if flash[:success]
+          .alert.alert-success.alert-dismissible.fade.show role="alert" 
+            strong = flash[:success]
+            button.close aria-label="Close" data-dismiss="alert" type="button" 
+              span aria-hidden="true"  &times;
+        - if flash[:error]
+          .alert.alert-danger.alert-dismissible.fade.show role="alert" 
+            strong = flash[:success]
+            button.close aria-label="Close" data-dismiss="alert" type="button" 
+              span aria-hidden="true"  &times;
+
+        = yield
     /! /.content
   /! /.content-wrapper
   = render 'layouts/dashboard/footer'

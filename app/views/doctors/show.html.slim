@@ -1,2 +1,15 @@
-h1 Doctors#show
-p Find me in app/views/doctors/show.html.slim
+= content_for :page_title do 
+  span Perfil do Médico
+
+.row
+  .col-md-12
+    .card.card-primary
+      .card-header
+        h3.card-title Informacoes detalhadas
+      .card-body
+        h3 = @doctor.name
+        h3 = @doctor.crm
+        h3 = @doctor.crm_uf
+      .card-footer
+      = link_to 'Editar' , edit_doctor_path(@doctor), class: 'btn btn-primary btn-sm'
+      = link_to 'Remover' , doctor_path(@doctor), class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: 'Tem certeza?'}

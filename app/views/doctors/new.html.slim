@@ -1,2 +1,9 @@
-h1 Doctors#new
-p Find me in app/views/doctors/new.html.slim
+= content_for :page_title do 
+  span Novo médico
+
+.row
+  .col-md-12
+    .card.card-primary
+      .card-header
+        h3.card-title Preencha o formulário com os dados do médico
+      = render 'form'
