@@ -15,6 +15,6 @@ class Patient
   validate :validar_cpf
 
   def validar_cpf
-    errors.add(:cpf, 'CPF inválido') unless CPF.valid? self.cpf
+    errors.add(:base, 'CPF inválido') unless CPF.valid? self.cpf
   end
 end

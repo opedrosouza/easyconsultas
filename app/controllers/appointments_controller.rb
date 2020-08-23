@@ -15,12 +15,12 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new appointment_params
-
+    # ap @appointment
     if @appointment.save
       flash[:success] = 'Consulta cadastrada com sucesso.'
       redirect_to appointments_path
     else
-      flash[:error] = @appointment.errors
+      flash[:error] = @appointment.errors.full_messages
       render :new
     end
   end
@@ -33,7 +33,7 @@ class AppointmentsController < ApplicationController
       flash[:success] = 'Consulta editada com sucesso.'
       redirect_to appointment_path(@appointment)
     else
-      flash[:error] = @appointment.errors
+      flash[:error] = @appointment.errors.full_messages
       render :edit
     end
   end
