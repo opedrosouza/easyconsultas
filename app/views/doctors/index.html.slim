@@ -5,23 +5,23 @@
     .card
       .card-header
         h3.card-title Todos os médicos
-      /! /.card-header
       .card-body.p-0
         table.table.table-striped
           thead
             tr
               th Nome
               th CRM
-              th CRM UF
+              th Pacientes
+              th Consultas
               th Acões
           tbody
             - @doctors.each do |doctor|
               tr
                 td = doctor.name
-                td = doctor.crm
-                td = doctor.crm_uf
+                td = doctor.crm_full
+                td = doctor.patients.count
+                td = doctor.appointments.count
                 td 
                   = link_to 'Perfil' , doctor_path(doctor), class: 'btn btn-info btn-sm'
                   = link_to 'Editar' , edit_doctor_path(doctor), class: 'btn btn-primary btn-sm'
                   = link_to 'Remover' , doctor_path(doctor), class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: 'Tem certeza?'}
-      /! /.card-body

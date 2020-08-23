@@ -1,2 +1,62 @@
 = content_for :page_title do 
   span Visão Geral
+
+.row
+  .col-lg-4
+    .small-box.bg-info
+      .inner
+        h3 = @appointments_count
+        p Consultas Totais
+      .icon
+        i.ion.ion-bag
+      = link_to "Mais informacoes", appointments_path, class: 'small-box-footer'
+  .col-lg-4
+    .small-box.bg-success
+      .inner
+        h3 = @patients_count
+        p Pacientes Totais
+      .icon
+        i.ion.ion-stats-bars
+      = link_to "Mais informacoes", patients_path, class: 'small-box-footer'
+  .col-lg-4
+    .small-box.bg-warning
+      .inner
+        h3 = @doctors.count
+        p Médicos Totais
+      .icon
+        i.ion.ion-person-add
+      = link_to "Mais informacoes", doctors_path, class: 'small-box-footer'
+
+.row
+  .col-md-4
+    = form_tag( search_path , remote: true, method: :get) do
+      .form-group
+        = label_tag :doctor_name, "Nome"
+        = text_field_tag :doctor_name, '', class: 'form-control', placeholder: 'Nome do Médico'    
+         
+    
+.row
+  .col-md-12
+    .card
+      .card-header
+        h3.card-title Todos os médicos
+      .card-body.p-0
+        table.table.table-striped
+          thead
+            tr
+              th Nome
+              th CRM
+              th Pacientes
+              th Consultas
+              th Acões
+          tbody
+            - @doctors.each do |doctor|
+              tr
+                td = doctor.name
+                td = doctor.crm_full
+                td = doctor.patients.count
+                td = doctor.appointments.count
+                td 
+                  = link_to 'Perfil' , doctor_path(doctor), class: 'btn btn-info btn-sm'
+                  = link_to 'Editar' , edit_doctor_path(doctor), class: 'btn btn-primary btn-sm'
+                  = link_to 'Remover' , doctor_path(doctor), class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: 'Tem certeza?'}
