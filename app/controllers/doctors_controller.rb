@@ -4,6 +4,10 @@ class DoctorsController < ApplicationController
   
   def index
     @doctors = Doctor.all
+    respond_to do |format|
+      format.json
+      format.html {  }
+    end
   end
 
   def show

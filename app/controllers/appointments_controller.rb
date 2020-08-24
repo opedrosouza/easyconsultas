@@ -12,7 +12,6 @@ class AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @doctors = Doctor.all
-    @patients = Patient.all
   end
 
   def create
@@ -22,7 +21,7 @@ class AppointmentsController < ApplicationController
       redirect_to appointments_path
     else
       flash[:error] = @appointment.errors.full_messages
-      render :new
+      redirect_to new_appointment_path
     end
   end
 

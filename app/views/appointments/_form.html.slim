@@ -7,10 +7,30 @@
       = f.label :ends_at, "Fim"
       = f.datetime_field :ends_at, class: 'form-control'
     .form-group
-      = f.label :cpf, "Selecione o Médico"
+      = f.label :doctort_id, "Selecione o Médico"
       = f.collection_select(:doctor_id, @doctors, :id, :name, {prompt: true}, { class: 'form-control' })
-    .form-group
-      = f.label :cpf, "Selecione o Paciente"
-      = f.collection_select(:patient_id, @patients, :id, :name, {prompt: true}, { class: 'form-control' })
+    .form-group#patient_selector
+      / = f.label :patient_id, "Selecione o Paciente"
+      / = f.collection_select(:patient_id, @patients, :id, :name, {prompt: true}, { class: 'form-control' })
   .card-footer
     = f.submit 'Cadastrar', class: 'btn btn-primary'
+
+javascript:
+  document.addEventListener('turbolinks:load', () => {
+    $('#appointment_doctor_id').on('change', () => {
+      $('#patient_selector').hide()
+      selectedDoctorId = $('#appointment_doctor_id').val()
+      $.ajax('/doctors.json').done( doctors => {
+        doctor = doctors.find( d => d['id'] == selectedDoctorId )
+        if (doctor['patients'].length > 0) {
+          $('#patient_selector').children().remove()
+          $('#patient_selector').show().append(`
+            <label for="appointment_patient_id">Selecione o Paciente</label>
+            <select id="appointment_patient_id" name="appointment[patient_id]" class="form-control">
+              ${doctor['patients'].map( p => `<option value="${p['_id']['$oid']}">${p.name}</option>` )}
+            </select>
+          `)
+        }
+      })
+    })
+  })
