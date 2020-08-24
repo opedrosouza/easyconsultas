@@ -11,11 +11,12 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
+    @doctors = Doctor.all
+    @patients = Patient.all
   end
 
   def create
     @appointment = Appointment.new appointment_params
-    # ap @appointment
     if @appointment.save
       flash[:success] = 'Consulta cadastrada com sucesso.'
       redirect_to appointments_path

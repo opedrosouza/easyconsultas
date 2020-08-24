@@ -8,9 +8,9 @@
       = f.datetime_field :ends_at, class: 'form-control'
     .form-group
       = f.label :cpf, "Selecione o Médico"
-      = f.collection_select(:doctor_id, Doctor.all, :id, :name, {prompt: true}, { class: 'form-control' })
+      = f.collection_select(:doctor_id, @doctors, :id, :name, {prompt: true}, { class: 'form-control' })
     .form-group
       = f.label :cpf, "Selecione o Paciente"
-      = f.collection_select(:patient_id, Patient.all, :id, :name, {prompt: true}, { class: 'form-control' })
+      = f.collection_select(:patient_id, @patients, :id, :name, {prompt: true}, { class: 'form-control' })
   .card-footer
     = f.submit 'Cadastrar', class: 'btn btn-primary'

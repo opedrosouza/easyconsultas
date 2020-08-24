@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 4.7', '>= 4.7.2'
+# An extension that becomes possible use paginate method with Mongoid
+gem 'will_paginate_mongoid', '~> 2.0', '>= 2.0.1'
 # Validate, generate and format CPF/CNPJ numbers. Include command-line tools. 
 gem 'cpf_cnpj', '~> 0.5.0'
 # Provides the generator settings required for Rails 3+ to use Slim

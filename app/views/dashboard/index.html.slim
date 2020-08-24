@@ -29,10 +29,11 @@
 
 .row
   .col-md-4
-    = form_tag( search_path , remote: true, method: :get) do
+    = form_tag search_dashboard_index_path , method: :get do
       .form-group
         = label_tag :doctor_name, "Nome"
-        = text_field_tag :doctor_name, '', class: 'form-control', placeholder: 'Nome do Médico'    
+        = text_field_tag :doctor_name, params[:doctor_name], class: 'form-control form-control-sm', placeholder: 'Nome do Médico'    
+        = submit_tag 'Filtrar', class: 'btn btn-primary btn-sm'
          
     
 .row
@@ -60,3 +61,4 @@
                   = link_to 'Perfil' , doctor_path(doctor), class: 'btn btn-info btn-sm'
                   = link_to 'Editar' , edit_doctor_path(doctor), class: 'btn btn-primary btn-sm'
                   = link_to 'Remover' , doctor_path(doctor), class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: 'Tem certeza?'}
+        = will_paginate @doctors
