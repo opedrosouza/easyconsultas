@@ -6,16 +6,17 @@ nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
       a.nav-link data-widget="pushmenu" href="#" role="button" 
         i.fas.fa-bars
     li.nav-item.d-none.d-sm-inline-block
-      a.nav-link href="../../index3.html"  Home
-    li.nav-item.d-none.d-sm-inline-block
-      a.nav-link href="#"  Contact
+      = link_to  "Visão Geral", authenticated_root_path, class: 'nav-link'
+    /   a.nav-link href="../../index3.html"  Home
+    / li.nav-item.d-none.d-sm-inline-block
+    /   a.nav-link href="#"  Contact
   /! SEARCH FORM
-  form.form-inline.ml-3
-    .input-group.input-group-sm
-      input.form-control.form-control-navbar aria-label="Search" placeholder="Search" type="search" /
-      .input-group-append
-        button.btn.btn-navbar type="submit" 
-          i.fas.fa-search
+  / form.form-inline.ml-3
+  /   .input-group.input-group-sm
+  /     input.form-control.form-control-navbar aria-label="Search" placeholder="Search" type="search" /
+  /     .input-group-append
+  /       button.btn.btn-navbar type="submit" 
+  /         i.fas.fa-search
   /! Right navbar links
   ul.navbar-nav.ml-auto
     li.nav-item

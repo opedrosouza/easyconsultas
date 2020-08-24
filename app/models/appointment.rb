@@ -12,6 +12,7 @@ class Appointment
   validate :validar_horario
 
   scope :da_data, lambda { |data| where(starts_at: data) }
+  scope :do_periodo, lambda { |inicio, fim| where(:starts_at.gte => inicio.beginning_of_day).and(:ends_at.lte => fim.end_of_day)}
 
   def validar_horario
     inicio_atendimento = horario(9)

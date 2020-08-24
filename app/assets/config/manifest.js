@@ -1,16 +1,2 @@
 //= link_tree ../images
 //= link_directory ../stylesheets .css
-//= link logo.png
-//= link header-hero.jpg
-//= link hero-image.png
-//= link about.png
-//= link our-service-1.jpg
-//= link service-1.png
-//= link service-2.png
-//= link service-3.png
-//= link shape-1.svg
-//= link shape-2.svg
-//= link shape-3.svg
-//= link shape-4.svg
-//= link shape-5.svg
-//= link footer-bg.jpg

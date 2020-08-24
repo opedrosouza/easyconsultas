@@ -1,25 +1,11 @@
-.navbar-area.headroom
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.shadow
   .container
-    .row
-      .col-lg-12
-        nav.navbar.navbar-expand-lg
-          a.navbar-brand href="/" 
-            / img alt="Logo" src="assets/images/logo.png" /
-            = image_tag  "logo.png" 
-          button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button" 
-            span.toggler-icon
-            span.toggler-icon
-            span.toggler-icon
-          #navbarSupportedContent.collapse.navbar-collapse.sub-menu-bar
-            ul#nav.navbar-nav.m-auto
-              li.nav-item.active
-                = link_to "Home", unauthenticated_root_path 
-              li.nav-item
-                = link_to  "Entrar", new_user_session_path
-          /! navbar collapse
-          .navbar-btn.d-none.d-sm-inline-block
-            = link_to  "Cadastrar", new_user_registration_path, class: 'main-btn'
-        /! navbar
-    /! row
-  /! container
-/! navbar area
+    = link_to "EasyConsultas", unauthenticated_root_path, class: 'navbar-brand font-weight-bold'
+    button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button" 
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.ml-auto
+        li.nav-item.active
+          = link_to  "Home", unauthenticated_root_path, class: 'nav-link' 
+        li.nav-item
+          = link_to  "Entrar", new_user_session_path, class: 'nav-link'
